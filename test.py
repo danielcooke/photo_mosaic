@@ -3,10 +3,10 @@ import cv2
 import numpy
 
 vid_in = input('Enter the video file name: ')
-img_in = input('ENter the base image file name: ')
+img_in = input('Enter the base image file name: ')
 
 image = Image.open(img_in)
-img_out = image.resize((192, 108))
+img_out = image.resize((96, 54))
 img_out.save('output.jpg')
 
 cap = cv2.VideoCapture(vid_in)
