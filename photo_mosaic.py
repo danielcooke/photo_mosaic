@@ -21,10 +21,13 @@ while(vid_in.isOpened()):
 vid_in.release()
 cv2.destroyAllWindows()
 
+property_frame = Image.open('frames/0.jpg')
+box = ((property_frame.width - property_frame.height)/2, 0, (property_frame.width - ((property_frame.width - property_frame.height)/2)), property_frame.height)
 frame_index = []
 for i in range(count):
     current_frame = Image.open('frames/' + str(i) + '.jpg')
-    single_pixel = current_frame.resize((1, 1))
+    square_frame = current_frame.crop(box)
+    single_pixel = square_frame.resize((1, 1))
     frame_index.append(numpy.array(single_pixel)[0,0])
 frame_index_numpy = numpy.array(frame_index)
 
