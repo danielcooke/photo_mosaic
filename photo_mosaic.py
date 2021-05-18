@@ -48,7 +48,7 @@ for i in range(y_photos):
                     break
                 else:
                     tolerance += 1
-print(photo_index[0])
+print(photo_index[20])
 
 img_out = base_img.resize((int(x_photos), int(y_photos)))
 
