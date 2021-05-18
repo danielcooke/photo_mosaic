@@ -2,20 +2,23 @@ from PIL import Image
 import cv2
 import numpy
 
-vid_in = input('Enter the video file name: ')
-img_in = input('Enter the base image file name: ')
+vid_in_name = input('Enter the video file name: ')
+img_in_name = input('Enter the base image file name: ')
+x_photos= input('Enter number of desired photos wide: ')
+y_photos = input('Enter number of desired photos tall: ')
+img_out_name = input('Enter the desired output image file name: ')
 
-image = Image.open(img_in)
-img_out = image.resize((96, 54))
-img_out.save('output.jpg')
-
-cap = cv2.VideoCapture(vid_in)
+vid_in = cv2.VideoCapture(vid_in_name)
 i = 0
-while(cap.isOpened()):
-    ret, frame = cap.read()
+while(vid_in.isOpened()):
+    ret, frame = vid_in.read()
     if ret == False:
         break
-    cv2.imwrite('frames/' + str(i) + '.jpg',frame)
+    cv2.imwrite('frames/' + str(i) + '.jpg', frame)
     i += 1
-cap.release()
+vid_in.release()
 cv2.destroyAllWindows()
+
+base_img = Image.open(img_in_name)
+img_out = base_img.resize((int(x_photos), int(y_photos)))
+img_out.save(img_out_name)
