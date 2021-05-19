@@ -67,4 +67,7 @@ for i in range(y_photos):
 matrix_out = matrix_out.astype(numpy.uint8)
 img_out = Image.fromarray(matrix_out)
 img_out.save(img_out_name)
+
+for f in os.listdir('frames'):
+    os.remove(os.path.join('frames', f))
 os.rmdir('frames')
