@@ -6,8 +6,8 @@ import numpy
 
 vid_in_name = 'test_vid.mp4' #input('Enter the video file name: ')
 img_in_name = 'test_img.jpg' #input('Enter the base image file name: ')
-x_photos = 48 #input('Enter number of desired photos wide: ')
-y_photos = 27 #input('Enter number of desired photos tall: ')
+x_photos = 96 #input('Enter number of desired photos wide: ')
+y_photos = 54 #input('Enter number of desired photos tall: ')
 img_out_name = 'output.jpg' #input('Enter the desired output image file name: ')
 
 vid_in = cv2.VideoCapture(vid_in_name)
