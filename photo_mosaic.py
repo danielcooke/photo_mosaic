@@ -11,6 +11,7 @@ y_photos = 54 #input('Enter number of desired photos tall: ')
 img_out_name = 'output.jpg' #input('Enter the desired output image file name: ')
 
 vid_in = cv2.VideoCapture(vid_in_name)
+os.mkdir('frames')
 count = 0
 while(vid_in.isOpened()):
     ret, frame = vid_in.read()
@@ -66,3 +67,4 @@ for i in range(y_photos):
 matrix_out = matrix_out.astype(numpy.uint8)
 img_out = Image.fromarray(matrix_out)
 img_out.save(img_out_name)
+os.rmdir('frames')
