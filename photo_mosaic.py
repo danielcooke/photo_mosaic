@@ -48,8 +48,21 @@ for i in range(y_photos):
                     break
                 else:
                     tolerance += 1
-print(photo_index[20])
 
-img_out = base_img.resize((int(x_photos), int(y_photos)))
+matrix_out = numpy.zeros((base_img.height, base_img.width, 3))
+small_x = int(base_img.width/x_photos)
+small_y = int(base_img.height/y_photos)
+for i in range(y_photos):
+    for j in range(x_photos):
+        big_tile = Image.open('frames/' +str(photo_index[i][j]) + '.jpg')
+        square_tile = big_tile.crop(box)
+        tile = square_tile.resize((small_x, small_y))
+        tile_numpy = numpy.array(tile)
+        for k in range(small_y):
+            for l in range(small_x):
+                for m in range(3):
+                    matrix_out[k + (i*small_y)][l + (j*small_x)][m] = tile_numpy[k][l][m]
 
+matrix_out = matrix_out.astype(numpy.uint8)
+img_out = Image.fromarray(matrix_out)
 img_out.save(img_out_name)
