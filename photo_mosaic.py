@@ -17,7 +17,7 @@ while(vid_in.isOpened()):
     ret, frame = vid_in.read()
     if ret == False:
         break
-    cv2.imwrite('frames/' + str(count) + '.jpg', frame)
+    cv2.imwrite(f'frames/{count}.jpg', frame)
     count += 1
 vid_in.release()
 cv2.destroyAllWindows()
@@ -26,7 +26,7 @@ property_frame = Image.open('frames/0.jpg')
 box = ((property_frame.width - property_frame.height)/2, 0, (property_frame.width - ((property_frame.width - property_frame.height)/2)), property_frame.height)
 frame_index = []
 for i in range(count):
-    current_frame = Image.open('frames/' + str(i) + '.jpg')
+    current_frame = Image.open(f'frames/{i}.jpg')
     square_frame = current_frame.crop(box)
     single_pixel = square_frame.resize((1, 1))
     frame_index.append(numpy.array(single_pixel)[0,0])
@@ -55,7 +55,7 @@ small_x = int(base_img.width/x_photos)
 small_y = int(base_img.height/y_photos)
 for i in range(y_photos):
     for j in range(x_photos):
-        big_tile = Image.open('frames/' +str(photo_index[i][j]) + '.jpg')
+        big_tile = Image.open(f'frames/{photo_index[i][j]}.jpg')
         square_tile = big_tile.crop(box)
         tile = square_tile.resize((small_x, small_y))
         tile_numpy = numpy.array(tile)
